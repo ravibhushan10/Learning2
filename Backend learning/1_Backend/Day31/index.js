@@ -1,11 +1,11 @@
 const { GoogleGenAI } = require('@google/genai');
 const readlineSync = require('readline-sync');
- 
+
 // Wait for user's response.
 
 
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyDtzRE8gxYLYbe7MVEwa2HDIPM110lr2_s"});
+const ai = new GoogleGenAI({ apiKey: KEY});
 const ConversationHistory = [];
 
 
@@ -14,7 +14,7 @@ async function main() {
     model: "gemini-2.0-flash",
     contents: ConversationHistory
   });
-  
+
   return response.text;
 }
 
@@ -24,11 +24,11 @@ async function main() {
 
 
 async function getWeather(location) {
-    
+
     const weatherInfo = [];
     for(const {city,date} of location){
-        
-       if(date.toLowerCase()=='today') 
+
+       if(date.toLowerCase()=='today')
        {
         console.log("Hello Data fetching");
         const response =  await fetch(`http://api.weatherapi.com/v1/current.json?key=1c930efb35ea46caa93123748252504&q=${city}`);
@@ -42,7 +42,7 @@ async function getWeather(location) {
         weatherInfo.push(data);
        }
     }
-    
+
     return weatherInfo;
 }
 
@@ -123,12 +123,12 @@ chatting();
 
 
 
-// 
+//
 // {
 //   "weather_details_needed": true,
 //   "location": [{"city":"delhi", "date":"today"}, {"city":"mumbai", "date":"today"}]
 // }
-// 
+//
 
 
 
@@ -150,4 +150,3 @@ chatting();
 // Blockchain chain
 //  Github profile leke aa sakta hai
 // News API
-
